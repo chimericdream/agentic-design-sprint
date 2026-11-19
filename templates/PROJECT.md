@@ -54,7 +54,7 @@ All relative to the repo root.
 - **Synthesis designer directory:** `docs/{{NAME}}-project/design/synthesis/`. Its `inputs/` holds
   anonymized copies of the designs as `design-a/`, `design-b/` and so on.
 <!-- /if -->
-- **Final package:** {{FINAL_PATH}}
+- **Final package:** `{{FINAL_PATH}}`
 - **Log:** `docs/{{NAME}}-project/LOG.md`
 - **Git-ignored:** {{GITIGNORED}}
 
@@ -83,7 +83,9 @@ The PM runs these when the developer reports a slice or the build done.
 {{SLICES}}
 <!-- /if -->
 
-## Constraints that apply to every agent
+## Constraints the PM enforces
+
+These are also in the developer brief. Designers receive their own rules through their briefs.
 
 {{CONSTRAINTS}}
 

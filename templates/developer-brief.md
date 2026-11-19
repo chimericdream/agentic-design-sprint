@@ -23,7 +23,7 @@ them. {{FRAMEWORK_NOTE}}
 ## What is in the package
 
 Start with `SPEC.md`. It is the developer handoff: tokens, the component inventory, the
-screen-by-screen (or page-by-page) rules, states, accessibility notes, a voice guide and a list of
+<!-- if: app -->screen-by-screen<!-- /if --><!-- if: site -->page-by-page<!-- /if --> rules, states, accessibility notes, a voice guide and a list of
 what is flexible. `TOKENS.md` and `DESIGN-NOTES.md` explain the choices. `mockups/` holds static
 HTML and CSS you can open by double-clicking, and `screenshots/` holds PNGs. Where the spec and the
 mockup stylesheet disagree, the stylesheet wins.
@@ -62,6 +62,7 @@ updated to match.
 - **Content.** Only make claims the product supports. No invented testimonials, user counts or
   prices.
 <!-- /if -->
+<!-- if: site -->
 <!-- if: code-in-repo -->
 - **Accuracy.** You are responsible for making any docs or tutorial text accurate. Verify every
   step, command, default and claim against the code and config in this repository, prefer what
@@ -72,13 +73,13 @@ updated to match.
   text against it. Build the text as written, keep a list of every command, default and step the
   copy or design marks as unconfirmed, and put that list in your final report for the human to check.
 <!-- /if -->
+<!-- /if -->
 - **Tokens.** Express the design's tokens as {{TOKEN_CONVENTION}}, light and dark, and mirror them
   in the component library's theme. Don't hard-code colors in component styles. Delete tokens
   nothing uses.
 - **Fonts and assets are self-hosted** in {{ASSET_LOCATION}}, with each font's license file. Remove
   fonts the new design no longer uses. Never load anything from a CDN or any third party at runtime.
-- **Light and dark** themes follow the system setting with a manual choice, with no flash of the
-  wrong theme on load.
+- **Themes.** Build what the design shows. {{THEME_RULE}} No flash of the wrong theme on load.
 - **Keep it simple.** If something in the design would be much more complicated to build than a
   close alternative (a custom component where a library one nearly fits, an animation library, a
   CSS trick that needs a hack), say so, and propose the simpler option with tradeoffs and a
@@ -123,7 +124,7 @@ Open a PR against `{{MAIN_BRANCH}}`. {{CI_NOTES}} **Do not merge.** The human me
   in light and dark where the design shows them, and works at 360, 768 and 1024 px.
 - These pass locally, with the output pasted in the PR: {{VERIFY_COMMANDS}}
 - No third-party runtime requests. Fonts and assets are self-hosted with licenses. Nothing in the
-  build breaks the trade-dress and privacy rules above.
+  build breaks the constraints above.
 - The accessibility pass is done.
 - The docs above are updated.
 - The PR is open with a clear summary: what changed, every deviation from the design with its

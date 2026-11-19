@@ -20,7 +20,8 @@ the content pack. If something is missing, end your turn with a `QUESTIONS FOR P
 
 ## What to write
 
-Real copy for **every page, screen and state** in the content pack, plus the shared pieces:
+Real copy for **every page or screen in the content pack, and every state it lists**, plus the
+shared pieces:
 
 {{COPY_SCOPE}}
 
@@ -31,8 +32,9 @@ the new text and why in `copy/CHANGES.md`.
 <!-- /if -->
 <!-- if: site -->
 Include each page's title and meta description. Docs, tutorials and FAQ answers are written to be
-representative: mark any command, default or step you could not confirm from the briefs, so that
-{{VERIFIER}} can check it against the real product later.
+representative: list any command, default or step you could not confirm from the briefs in
+`CLAIMS.md` as unconfirmed, so that {{VERIFIER}} can check it against the real product later. Keep
+the page text itself clean. Unconfirmed markers never appear in the copy.
 <!-- /if -->
 
 ## Voice

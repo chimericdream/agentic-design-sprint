@@ -29,7 +29,8 @@ Read what the repo already says, so the interview is short:
   with the app elsewhere.
 - Where fonts, assets and design tokens live, and what the token convention is.
 - The git branch, the main branch name, and whether a `docs/*-project/` already exists. If one
-  does, stop and ask whether to extend or replace it. Never overwrite without being told to.
+  does, stop and ask whether to extend or replace it. Never overwrite without being told to. If the
+  feature branch already exists, locally or on the remote, ask before reusing it.
 
 `AGENTS.md` and `CLAUDE.md` are injected into every designer's context. Note anything in them that
 describes the current stack, fonts, tokens or design files, because it can anchor a designer.
@@ -47,8 +48,9 @@ option each time, because the human prefers simpler setups.
 
 1. **Name** (short, kebab-case, used in `docs/<name>-project/`) and **product name**.
 2. **Kind:** app (screens people work in) or site (pages people read).
-3. **Mode:** *redesign* (a working product exists, designers get screenshots of it) or *new*
-   (nothing exists, designers work from the content pack).
+3. **Mode:** *redesign* (an existing UI exists and designers get screenshots or files of it) or
+   *new* (there is no UI to show, so designers work from the content pack). A site for an existing
+   product with no screenshots yet is *new*.
 4. **Designers:** how many (default two), and the model for each. Whether to run them in parallel or
    one at a time (recommend one at a time if the machine has locked up under parallel browsers
    before).
@@ -67,23 +69,30 @@ option each time, because the human prefers simpler setups.
 - **Roles, and what each can see or do** on the screens where it differs.
 - The product facts: the core ideas, vocabulary, scope limits, and what is deliberately **not** in
   the product (it is fine to have none). This becomes the content pack, which is the agents' only
-  knowledge of the product, so it must be accurate. Do not pad it.
+  knowledge of the product, so it must be accurate. Do not pad it. For a site, also the link
+  targets: the source repo URL, the image name, where each call to action points, the footer links.
 - **Enough facts per page or screen?** For each page or screen, say whether the facts cover it. If
-  not, either get more from the human or record that the copywriter marks the gap "unconfirmed".
-- The pages or screens to cover, and the states that a normal run doesn't show.
+  not, either get more from the human or record the gap: a copywriter marks it "unconfirmed", and
+  without one the pack says that page's facts are limited to what it lists.
+- The pages or screens to cover, **in priority order** (this decides slice 1 and what a synthesis
+  designer weighs), and the states that a normal run doesn't show, with **one line per state on what
+  it contains** (fields, next actions). If the human doesn't know, the pack says so.
 - Redesign: what is wrong today (the human's own words), what must be kept, how screenshots are
   produced (and whether to run the command now), and what gets staged as inputs.
 - A brand family to extend (an existing site or design system), if any, and which files become an input.
 
 **Round 3: design direction and constraints**
 
-- Tone in a sentence: the verbal voice and the visual personality, and anything to avoid.
+- Tone in a sentence (the verbal voice, and anything to avoid), and separately the visual
+  personality in a sentence.
 - A visual motif to build into the identity as a system, if any, where it may and may not appear,
   and a one-line definition of any term designers must interpret.
 - Trade-dress or branding limits (third-party marks to avoid).
 - Stack facts and forbidden dependencies, icon library, minimum text size, spelling (US or UK).
 - Which device comes first and the widths to design for (default: phone-first, 360, 390, 768, 1024
   and 1440).
+- Redesign: does the product have dark mode and a theme toggle today? If not and the scope is UI
+  only, is adding them allowed?
 - Privacy or visibility rules the design must not leak.
 - Redesign only: scope limits (for example "UI only, no schema changes"), and why control labels
   matter (for example tests that find controls by name).
@@ -93,7 +102,10 @@ option each time, because the human prefers simpler setups.
 - Feature branch name and the main branch. Who merges (always the human) and what a merge triggers.
 - Whether CI exists, what its jobs are called, and what a PR must show.
 - The verification commands (lint, format, typecheck, tests, build, e2e), taken from the repo, and
-  the directory each runs from.
+  the directory each runs from. Whether the lint and format checks cover the design files that will
+  be committed (recommend excluding hand-authored mockups from them).
+- Confirm the token convention and where fonts and assets live, as read from the repo. If the repo
+  has no code yet, propose one.
 - The slices. Default: 1 foundation (theme, tokens, fonts, shell, the two most important screens),
   with a hard human stop; 2 everything else; 3 polish, tests, docs and the PR. State what slice 1
   contains for this product, and which listed states belong to which slice.
@@ -135,7 +147,8 @@ How to fill a template:
 5. Never put project secrets or tokens in a brief. Briefs are sent to subagents and may be committed.
 
 If the project keeps `design/` out of git, add `docs/<name>-project/design/` to `.gitignore`
-(create the file if it does not exist).
+(create the file if it does not exist). If the final package lands in a tracked location and PNGs are
+not committed, add an ignore rule for them there too (for example `<final path>/**/*.png`).
 
 ## 4. Review, scan, commit, hand over
 
@@ -143,7 +156,11 @@ If the project keeps `design/` out of git, add `docs/<name>-project/design/` to 
    files written. Include a **"decisions I made"** list: every value you derived or chose without an
    answer, every place the repo contradicted the human, and what the injected `AGENTS.md` and
    `CLAUDE.md` could do to the designers. Offer to open any file. Ask for corrections and apply them.
-2. Scan after the corrections: `grep -rnE '\{\{|<!--|-->' docs/<name>-project/` must find nothing.
+2. Reread every file once as its receiver, with this checklist: no sentence addressed to the wrong
+   reader (the copywriter or developer never sees the design brief), no reference to a file the
+   receiver doesn't get (the developer has no content pack), no "above" or "below" pointing at
+   removed text, no app-only wording in a site's briefs or the reverse, and no hedge left for a flag
+   that is decided. Then scan after the corrections: `grep -rnE '\{\{|<!--|-->' docs/<name>-project/` must find nothing.
 3. Commit on the feature branch with small conventional commits, never on the main branch:
    `docs: add <name> sprint configuration` for `PROJECT.md`, `LOG.md` and any `.gitignore` change,
    then `docs: add <name> sprint briefs` for `prompts/`.

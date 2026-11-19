@@ -12,6 +12,11 @@ their output are in your working directory, in `inputs/design-a/`, `inputs/desig
 one folder per design. You work only in your own directory and, as the brief says, you should not
 browse anywhere else in the repository.
 
+The design brief was written for the independent designers. Where it says another designer's work
+must stay unseen, or describes what `inputs/` holds, that does not apply to you. For you, `inputs/`
+holds the anonymized copies of their designs, prepared by the PM, and you are meant to read them.
+Everything else in the brief applies, including the stack, the constraints and the deliverables.
+
 <!-- if: copywriter -->
 The copy is the same in every design: a copywriter wrote it, and it is in `inputs/copy/`. Use it as
 the design brief's Writing section says, with fit edits only, recorded in `COPY-CHANGES.md`. Do not
@@ -20,13 +25,13 @@ judge the designs on their copy. Do judge how well each one laid it out.
 
 Your task has three steps.
 
-1. **Evaluate every design honestly.** Look at the real screenshots and the HTML at all supported
+1. **Evaluate every design honestly.** Look at each design's own screenshots and its HTML at all supported
    widths. Judge each against the brief, not against your own taste, on:
    - first impression and personality
    - whether the visual identity (and the motif, if the brief names one) is a system or a decoration
    - legibility and accessibility
    - mobile quality
-   - how well it serves the product's most important screens or pages, as the content pack lists them
+   - how well it serves the goal the design brief states
    - dark mode
    - how buildable it is with the stack the design brief names
    - how the copy is laid out and how far the design had to bend it (when a copywriter wrote it),

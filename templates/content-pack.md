@@ -24,7 +24,7 @@ Do not invent facts beyond this list.
 {{PRODUCT_FACTS}}
 
 <!-- if: not-in-product -->
-**Not in the product, so not in the design or the copy:** {{NOT_IN_PRODUCT}}
+**Not in the product.** Do not design or write as though these exist. If the topic comes up, say plainly that the product doesn't do it: {{NOT_IN_PRODUCT}}
 <!-- /if -->
 
 <!-- if: app -->

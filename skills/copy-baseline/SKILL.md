@@ -69,5 +69,7 @@ Write a `copy/` folder:
   box.
 - `CLAIMS.md`: the claims table described above.
 
-Docs, tutorials and FAQ answers are written to be representative. A developer verifies them against
-the real product later, so mark any command, default or step you could not confirm from the brief.
+Docs, tutorials and FAQ answers are written to be representative. Someone verifies them against the
+real product later, so list any command, default or step you could not confirm from the brief in
+`CLAIMS.md` as unconfirmed. Keep the page text itself clean: unconfirmed markers never appear in
+the copy.

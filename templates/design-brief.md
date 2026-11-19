@@ -35,7 +35,7 @@ finish, say whether you opened anything outside your directory, and what.
 
 **What you will see anyway.** The tool you run injects the repository's `CLAUDE.md` and `AGENTS.md`
 (whichever exist) into your context. {{INJECTED_CONTEXT_NOTE}} Mention in your handoff anything from
-them that influenced you.
+those files that influenced you.
 
 <!-- if: redesign -->
 ## The problem to solve
@@ -70,23 +70,25 @@ it. Say where and why in `DESIGN-NOTES.md`. Do not copy its page layouts.
 ## What is in `inputs/`
 
 {{INPUTS_DESCRIPTION}}
+
+The screenshots are the authority on what is on each screen today. The content pack is the authority
+on everything else.
 <!-- /if -->
 
 ## Design brief
 
 - **Your direction.** Make bold, specific decisions about layout, density, typography, color,
-  shape, iconography and motion. The voice and tone are in the content pack: let them shape the look
-  too.<!-- if: redesign --> Redesign the structure of screens where that makes them better. You are
+  shape, iconography and motion. {{VISUAL_PERSONALITY}} The voice and tone are in the content pack:
+  let them shape the look too.<!-- if: redesign --> Redesign the structure of screens where that makes them better. You are
   not limited to restyling the current layouts.<!-- /if -->
 <!-- if: motif -->
 - **The {{MOTIF_NAME}} motif is part of the theme.** Weave it into the identity as a **system** with
-  clear rules for where it appears and where it doesn't ({{MOTIF_PLACES}}). It must never hurt
-  legibility. Data-dense areas and body text stay plain.
+  clear rules for where it appears and where it doesn't. {{MOTIF_DEFINITION}} It may appear in
+  {{MOTIF_PLACES}}. It must never hurt legibility. Data-dense areas and body text stay plain.
 <!-- /if -->
 - **No third-party trade dress.** {{TRADE_DRESS}}
 - **{{RESPONSIVE_LABEL}}.** {{RESPONSIVE}}
-- **Light and dark** themes that both look intentional, following the system setting with a manual
-  choice.
+- **Themes.** {{THEME_RULE}}
 - **Accessible.** WCAG AA contrast, visible focus states, correct heading order and landmarks,
   nothing conveyed by color alone, a calm option for any animation (`prefers-reduced-motion`). No
   text under {{MIN_TEXT_PX}} px.
@@ -125,7 +127,7 @@ width you mock, including the phone. If they can't fit, shorten them and keep th
 
 The notes say:
 
-1. **Screen:** which view (for example, "Dashboard page").
+1. **Screen:** which view (for example, "Settings page").
 2. **State:** what data and condition to capture.
 3. **Viewport and theme:** phone or desktop, light or dark.
 4. **Focus:** what the viewer should notice, and what to crop to.
@@ -146,6 +148,8 @@ with its ID, file name and the full capture notes, in `PLACEHOLDERS.md`.
 
 <!-- if: no-copywriter -->
 Write real copy for everything you mock up, following the content pack's voice and writing rules.
+<!-- if: redesign -->Keep existing labels as the screenshots show them, and write new copy only for states
+and elements the screenshots don't show.<!-- /if -->
 Make the voice clear in `SPEC.md`, because a developer will extend it.
 <!-- /if -->
 <!-- if: copywriter -->
@@ -170,6 +174,7 @@ All inside your working directory, outside `inputs/`:
   linking every mockup. Then PNG screenshots of each, in `screenshots/`, named
   `<screen>-<width>-<theme>.png`. Cover:
 {{MOCKUP_COVERAGE}}
+
   Mockups should be interactive only where CSS alone can do it (a menu or toggle opening, a tab
   switching). Keep scripts minimal.
 - **`DESIGN-NOTES.md`:** <!-- if: redesign -->your critique of the current product (section 1), <!-- /if -->the
@@ -217,9 +222,14 @@ project manager relays, so be precise.
 <!-- /if -->
 - **A component inventory** with every state, spacing and responsive behavior. Name the library
   component each maps to where it's obvious.
-- **Screen-by-screen (or page-by-page) rules:** layout, content order, and what changes at each
-  breakpoint<!-- if: privacy -->, including what each role does and does not see<!-- /if -->.
+- <!-- if: app -->**Screen-by-screen rules:**<!-- /if --><!-- if: site -->**Page-by-page rules:**<!-- /if --> layout, content order,
+  and what changes at each breakpoint<!-- if: privacy -->, including what each role does and does not see<!-- /if -->.
+<!-- if: app -->
 - **Empty, loading, error and edge states.**
+<!-- /if -->
+<!-- if: site -->
+- **Error pages and edge states:** the 404, long content, narrow widths and any no-script behavior.
+<!-- /if -->
 - **Accessibility notes** and reduced-motion behavior.
 <!-- if: redesign -->
 - **A copy-change table** (screen, old text, new text, reason) so the developer and the test suite
