@@ -45,6 +45,11 @@ mockup stylesheet disagree, the stylesheet wins. {{PACKAGE_EXTRAS}}
 - **Content.** You are responsible for making any docs or tutorial text accurate. Verify every
   step, command, default and claim against the repo, prefer what the code and config actually do
   over older plans, and report differences to the PM. Only make claims the product supports.
+- **Screenshot placeholders.** Build one reusable placeholder component that follows the design:
+  fixed aspect ratio, alt text, and the capture notes rendered **inside** the placeholder box so they
+  never change the layout. Swapping in a real image must be a matter of dropping a file at a
+  documented path, and the notes go away with the placeholder. Keep `PLACEHOLDERS.md` in step with
+  what is actually on the pages.
 <!-- /if -->
 - **Tokens.** Express the design's tokens as {{TOKEN_CONVENTION}}, light and dark, and mirror them
   in the component library's theme. Don't hard-code colors in component styles. Delete tokens

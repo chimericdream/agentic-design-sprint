@@ -142,15 +142,25 @@ Everything you may rely on. Do not invent facts beyond this list.
 
 There are no screenshots of the real product yet. Wherever it would be shown, draw a **designed
 placeholder** in the {{PRODUCT_NAME}} style, with a fixed aspect ratio so layouts won't shift when
-real images arrive. Give each one a **caption underneath** that says:
+real images arrive.
+
+**The capture notes live inside the placeholder box, not under it.** They are instructions for
+whoever takes the screenshot later, not page content, so they must not take up layout space or
+change the height of the page. The box keeps the same size whether it holds one line of notes or
+four, and the notes never push surrounding content. Put them inside the box (for example in a
+corner panel or over the faux screen), set them small and legible, and make sure they fit at every
+width you mock, including the phone. If they can't fit, shorten them and keep the full text in
+`PLACEHOLDERS.md`. Once a real image replaces the placeholder, the notes disappear with it.
+
+The notes say:
 
 1. **Screen:** which view (for example, "Set detail page").
 2. **State:** what data and condition to capture.
 3. **Viewport and theme:** phone or desktop, light or dark.
 4. **Focus:** what the viewer should notice, and what to crop to.
 
-Also write alt text for each. Keep a single list of every placeholder, with an ID and file name, in
-`PLACEHOLDERS.md`.
+Also write alt text for each. Keep a single list of every placeholder, with an ID, file name and the
+full capture notes, in `PLACEHOLDERS.md`.
 <!-- /if -->
 
 ## Writing
