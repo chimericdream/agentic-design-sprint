@@ -1,12 +1,11 @@
 <!--
-TEMPLATE NOTES (the init skill removes every HTML comment before saving):
-Keep exactly one of the two variants below, depending on whether the project uses a synthesis
-designer. Fill {{TOKENS}}.
+Template notes live in the design-sprint-init skill, references/tokens.md. Keep exactly one of the
+two variants below, depending on whether the project has a synthesis designer. Remove this comment.
 -->
 
 # Addendum for the independent designers
 
-Sent together with `01-design-brief.md`.
+Sent together with the design brief and the content pack.
 
 <!-- if: no-synthesis -->
 You are one of {{DESIGNER_COUNT}} designers working independently on the same brief. You will not

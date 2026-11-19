@@ -1,54 +1,41 @@
 <!--
-TEMPLATE NOTES (the init skill removes every HTML comment before saving the brief):
-- {{TOKENS}} are filled from the interview. Never leave one in the saved file.
-- Blocks wrapped in <!-- if: redesign --> ... <!-- /if --> are kept only in that mode. Same for
-  "new", "app", "site", "motif", "privacy", "brand-family", "copywriter", "no-copywriter". Delete
-  the block otherwise. "copywriter" means the project has a copywriter whose approved copy deck is
-  in each designer's inputs/copy/.
-- Renumber the Deliverables list after removing blocks, and make sure no sentence is left dangling.
-- The standing rules every designer follows (isolation, QUESTIONS FOR PM, machine safety, the
-  handoff statement) live in the designer agent definition, not here. This brief only adds what is
-  specific to the project.
+Template notes live in the design-sprint-init skill, references/tokens.md. The product facts,
+audience, pages or screens, tone and writing rules are in the content pack, which the PM sends with
+this brief, so none of them belong here. The standing rules every designer follows (isolation,
+QUESTIONS FOR PM, machine safety, the handoff statement) live in the designer agent definition.
+Remove this comment.
 -->
 
 # Design brief: {{PRODUCT_NAME}}
 
-Sent to {{WHO_RECEIVES}}{{ADDENDUM_NOTE}}.
+Sent to the independent designers, together with the content pack and the designers' addendum.
 
 ## Your role
 
 You are a senior {{DESIGNER_TITLE}} creating {{DELIVERABLE_SENTENCE}}. Make every visual and
 structural decision yourself. If a design skill is available to you, use it, including its
-look-and-fix loop on screenshots{{APP_SCREEN_NOTE}}.
+look-and-fix loop on screenshots.
 
 **Where you work.** You work only in the directory the project manager gave you.
 <!-- if: redesign -->
 It contains an `inputs/` folder with everything you need: {{INPUTS_SUMMARY}}.
 <!-- /if -->
 <!-- if: new -->
-Everything you need is in this brief. {{NO_REFERENCE_NOTE}}
+Everything you need is in this brief and the content pack.
 <!-- /if -->
 <!-- if: copywriter -->
-Its `inputs/` folder holds the approved copy deck in `inputs/copy/`: the words for every page and
-state, a voice guide and length limits.
+Its `inputs/` folder also holds the approved copy deck in `inputs/copy/`: the words for every page
+and state, a voice guide and length limits.
 <!-- /if -->
 That directory sits inside a code repository, and you are expected **not to browse it**. Do not open
-source code, configuration, documentation, {{OFF_LIMITS_EXTRA}} or any directory other than your
+source code, configuration, documentation, {{OFF_LIMITS_EXTRA}}, or any directory other than your
 own. Another designer's work, in particular, must stay unseen. If you need something you don't
 have, end your turn with a `QUESTIONS FOR PM` block. You cannot talk to anyone else. When you
 finish, say whether you opened anything outside your directory, and what.
 
-**What you will see anyway.** The tool you run in injects the repository's `CLAUDE.md` and
-`AGENTS.md` into your context. {{INJECTED_CONTEXT_NOTE}} Mention in your handoff anything from them
-that influenced you.
-
-## What {{PRODUCT_NAME}} is
-
-{{PRODUCT_DESCRIPTION}}
-
-**Audience and contexts of use**
-
-{{AUDIENCE}}
+**What you will see anyway.** The tool you run injects the repository's `CLAUDE.md` and `AGENTS.md`
+(whichever exist) into your context. {{INJECTED_CONTEXT_NOTE}} Mention in your handoff anything from
+them that influenced you.
 
 <!-- if: redesign -->
 ## The problem to solve
@@ -59,7 +46,7 @@ Start by diagnosing this yourself. Open the inputs and write a short, honest cri
 `DESIGN-NOTES.md`): what is weak, what is worth keeping, and what the redesign needs to achieve.
 Then design.
 
-The goal is a {{KIND}} that:
+The redesigned {{KIND}} should:
 
 {{GOALS}}
 <!-- /if -->
@@ -85,48 +72,29 @@ it. Say where and why in `DESIGN-NOTES.md`. Do not copy its page layouts.
 {{INPUTS_DESCRIPTION}}
 <!-- /if -->
 
-## Product facts
-
-Everything you may rely on. Do not invent facts beyond this list.
-
-{{PRODUCT_FACTS}}
-
-**Not in the product, so not in your design:** {{NOT_IN_PRODUCT}}
-
-<!-- if: app -->
-**States the inputs can't show. Design all of them.**
-
-{{STATES_TO_DESIGN}}
-<!-- /if -->
-
-<!-- if: site -->
-## Pages to design
-
-{{PAGES}}
-<!-- /if -->
-
 ## Design brief
 
-- **Your direction.** Make bold, specific decisions about layout, density, typography, colour,
-  shape, iconography and motion. {{REDESIGN_FREEDOM}}
-- **Tone.** {{TONE}}
+- **Your direction.** Make bold, specific decisions about layout, density, typography, color,
+  shape, iconography and motion. The voice and tone are in the content pack: let them shape the look
+  too.<!-- if: redesign --> Redesign the structure of screens where that makes them better. You are
+  not limited to restyling the current layouts.<!-- /if -->
 <!-- if: motif -->
-- **{{MOTIF_NAME}} is part of the theme.** Weave it into the identity as a **system** with clear
-  rules for where it appears and where it doesn't ({{MOTIF_PLACES}}). It must never hurt legibility.
-  Data-dense areas and body text stay plain. {{MOTIF_PROMPT}}
+- **The {{MOTIF_NAME}} motif is part of the theme.** Weave it into the identity as a **system** with
+  clear rules for where it appears and where it doesn't ({{MOTIF_PLACES}}). It must never hurt
+  legibility. Data-dense areas and body text stay plain.
 <!-- /if -->
 - **No third-party trade dress.** {{TRADE_DRESS}}
 - **{{RESPONSIVE_LABEL}}.** {{RESPONSIVE}}
 - **Light and dark** themes that both look intentional, following the system setting with a manual
-  choice{{THEME_EXTRA}}.
+  choice.
 - **Accessible.** WCAG AA contrast, visible focus states, correct heading order and landmarks,
-  nothing conveyed by colour alone, a calm option for any animation (`prefers-reduced-motion`). No
+  nothing conveyed by color alone, a calm option for any animation (`prefers-reduced-motion`). No
   text under {{MIN_TEXT_PX}} px.
 - **Buildable.** {{STACK_FACTS}} Design what you want, but it must be achievable with standard web
-  technology and the component library named above, styled through its theme and CSS. Avoid effects
-  that need a server, third-party widgets, video or WebGL. Choose **fonts that are free to
-  self-host** (open licences such as OFL). Nothing may load from a third party at runtime.
-  Decorative art is SVG or CSS. {{ICON_RULE}}
+  technology and the stack just described, styled through its theme and CSS. Avoid effects that
+  need a server, third-party widgets, video or WebGL. Choose **fonts that are free to self-host**
+  (open licenses such as OFL). Nothing may load from a third party at runtime: no CDN, analytics,
+  trackers or external embeds. Decorative art is SVG or CSS. {{ICON_RULE}}
 <!-- if: redesign -->
 - **No new features.** Every field, number and action in your mockups must exist in the product
   today. If you have an idea that needs something new, put it in `PROPOSALS.md` with the reasoning.
@@ -138,9 +106,6 @@ Everything you may rely on. Do not invent facts beyond this list.
 <!-- if: privacy -->
 - **Privacy is part of the design.** {{PRIVACY_RULES}} Don't design any element that would leak
   these.
-<!-- /if -->
-<!-- if: no-runtime-third-party -->
-- **No third-party anything at runtime.** No analytics, no trackers, no external embeds.
 <!-- /if -->
 
 <!-- if: new -->
@@ -160,7 +125,7 @@ width you mock, including the phone. If they can't fit, shorten them and keep th
 
 The notes say:
 
-1. **Screen:** which view (for example, "Set detail page").
+1. **Screen:** which view (for example, "Dashboard page").
 2. **State:** what data and condition to capture.
 3. **Viewport and theme:** phone or desktop, light or dark.
 4. **Focus:** what the viewer should notice, and what to crop to.
@@ -180,10 +145,8 @@ with its ID, file name and the full capture notes, in `PLACEHOLDERS.md`.
 ## Writing
 
 <!-- if: no-copywriter -->
-Write real copy for everything you mock up. Plain, specific, warm and human. No filler or hype. Use
-{{SPELLING}} spelling. Avoid "it's not X, it's Y" reveals, strings of three adjectives, and stock
-words like "seamlessly" and "unlock". Do not make claims beyond the product facts, and do not
-invent testimonials, user counts or prices. Make the voice clear, because a developer will extend it.
+Write real copy for everything you mock up, following the content pack's voice and writing rules.
+Make the voice clear in `SPEC.md`, because a developer will extend it.
 <!-- /if -->
 <!-- if: copywriter -->
 A copywriter has already written the copy. It is in `inputs/copy/`, and `INDEX.md` there says where
@@ -200,35 +163,36 @@ wrong for your layout, say so there instead of quietly exceeding it.
 
 ## Deliverables
 
-All inside your working directory{{OUTSIDE_INPUTS}}:
+All inside your working directory, outside `inputs/`:
 
-1. **Mockups:** hand-authored static HTML and CSS (no build step, no frameworks, openable by
-   double-clicking), in `mockups/`, with shared CSS, assets and fonts. Include `mockups/index.html`
-   linking every mockup. Then PNG screenshots of each, in `screenshots/`, named
-   `<screen>-<width>-<theme>.png`. Cover:
+- **Mockups:** hand-authored static HTML and CSS (no build step, no frameworks, openable by
+  double-clicking), in `mockups/`, with shared CSS, assets and fonts. Include `mockups/index.html`
+  linking every mockup. Then PNG screenshots of each, in `screenshots/`, named
+  `<screen>-<width>-<theme>.png`. Cover:
 {{MOCKUP_COVERAGE}}
-   Mockups should be interactive only where CSS alone can do it (a menu or toggle opening, a tab
-   switching). Keep scripts minimal.
-2. **`DESIGN-NOTES.md`:** {{CRITIQUE_CLAUSE}}the concept and why it fits, the type and colour
-   reasoning, density and responsive behavior, {{MOTIF_NOTES_CLAUSE}}and what you chose not to do.
-3. **`TOKENS.md`:** colours (light and dark, with contrast ratios for text pairs), type scale,
-   spacing, radii, shadows, breakpoints, and motion.
-4. **`SPEC.md`:** the developer handoff, described below.
+  Mockups should be interactive only where CSS alone can do it (a menu or toggle opening, a tab
+  switching). Keep scripts minimal.
+- **`DESIGN-NOTES.md`:** <!-- if: redesign -->your critique of the current product (section 1), <!-- /if -->the
+  concept and why it fits, the type and color reasoning, density and responsive behavior,
+  <!-- if: motif -->how the motif works as a system, <!-- /if -->and what you chose not to do.
+- **`TOKENS.md`:** colors (light and dark, with contrast ratios for text pairs), type scale,
+  spacing, radii, shadows, breakpoints, and motion.
+- **`SPEC.md`:** the developer handoff, described below.
 <!-- if: redesign -->
-5. **`PROPOSALS.md`:** ideas that need new features or change what the product does, kept out of
-   the main design.
-6. **`MOCKUP-INDEX.md`:** each mockup HTML file and each PNG, and which current screen or state it
-   replaces.
+- **`PROPOSALS.md`:** ideas that need new features or change what the product does, kept out of
+  the main design.
+- **`MOCKUP-INDEX.md`:** each mockup HTML file and each PNG, and which current screen or state it
+  replaces.
 <!-- /if -->
 <!-- if: new -->
-5. **`PLACEHOLDERS.md`:** as above.
+- **`PLACEHOLDERS.md`:** as above.
 <!-- /if -->
 <!-- if: copywriter -->
-6. **`COPY-CHANGES.md`:** every fit edit you made to the copy deck (deck text, your text, reason),
-   or a line saying you made none.
+- **`COPY-CHANGES.md`:** every fit edit you made to the copy deck (deck text, your text, reason),
+  or a line saying you made none.
 <!-- /if -->
-7. **Assets** as separate SVG files, and the font files with their licences (or exact download
-   instructions).
+- **Assets** as separate SVG files, and the font files with their licenses (or exact download
+  instructions).
 
 ### What `SPEC.md` must contain
 
@@ -238,10 +202,10 @@ project manager relays, so be precise.
 - A map of the package and how to open it. State that the stylesheet is the source of truth where it
   and the document disagree.
 - **Tokens:** exact values for both themes, type scale, spacing scale, radii, shadows, breakpoints,
-  motion, and the font files with licences.
+  motion, and the font files with licenses.
 <!-- if: motif -->
-- **The {{MOTIF_NAME}} system:** each element, where it appears, where it must not, and how it
-  behaves at each breakpoint.
+- **The {{MOTIF_NAME}} motif system:** each element, where it appears, where it must not, and how
+  it behaves at each breakpoint.
 <!-- /if -->
 <!-- if: app -->
 - **The app shell:** navigation at each breakpoint, page heads and page width rules, scroll
@@ -254,7 +218,7 @@ project manager relays, so be precise.
 - **A component inventory** with every state, spacing and responsive behavior. Name the library
   component each maps to where it's obvious.
 - **Screen-by-screen (or page-by-page) rules:** layout, content order, and what changes at each
-  breakpoint{{ROLE_CLAUSE}}.
+  breakpoint<!-- if: privacy -->, including what each role does and does not see<!-- /if -->.
 - **Empty, loading, error and edge states.**
 - **Accessibility notes** and reduced-motion behavior.
 <!-- if: redesign -->

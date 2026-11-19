@@ -1,16 +1,16 @@
 <!--
-TEMPLATE NOTES (the init skill removes every HTML comment before saving):
-Only used when the project has a synthesis designer. Sent together with the design brief.
+Template notes live in the design-sprint-init skill, references/tokens.md. Only used when the
+project has a synthesis designer. Remove this comment.
 -->
 
 # Brief for the synthesis designer
 
-Sent together with `01-design-brief.md`.
+Sent together with the design brief and the content pack.
 
 You've been given the same brief as the designers before you. They worked independently. Copies of
-their output are in your working directory, in `inputs/design-a/` and `inputs/design-b/`{{MORE_DESIGNS}}.
-You work only in your own directory and, as the brief says, you should not browse anywhere else in
-the repository.
+their output are in your working directory, in `inputs/design-a/`, `inputs/design-b/` and so on,
+one folder per design. You work only in your own directory and, as the brief says, you should not
+browse anywhere else in the repository.
 
 <!-- if: copywriter -->
 The copy is the same in every design: a copywriter wrote it, and it is in `inputs/copy/`. Use it as
@@ -23,12 +23,12 @@ Your task has three steps.
 1. **Evaluate every design honestly.** Look at the real screenshots and the HTML at all supported
    widths. Judge each against the brief, not against your own taste, on:
    - first impression and personality
-   - whether the {{MOTIF_OR_IDENTITY}} is a system or a decoration
+   - whether the visual identity (and the motif, if the brief names one) is a system or a decoration
    - legibility and accessibility
    - mobile quality
-   - {{PRODUCT_SPECIFIC_CRITERIA}}
+   - how well it serves the product's most important screens or pages, as the content pack lists them
    - dark mode
-   - how buildable it is with {{STACK_SHORT}}
+   - how buildable it is with the stack the design brief names
    - how the copy is laid out and how far the design had to bend it (when a copywriter wrote it),
      otherwise copy quality and tone
 
@@ -43,12 +43,9 @@ Your task has three steps.
 Deliverables, in your own directory (outside `inputs/`):
 
 - **`EVALUATION.md`:** your assessment of every design, what you kept and what you discarded, and why.
-- **Final mockups** (static HTML and CSS plus PNGs) covering **every page and state** in the design
-  brief, at the widths and themes the brief lists, including hover, focus, active and current
-  states.
-- **`SPEC.md`**, the developer handoff, with the contents the design brief lists.
-- **All assets** as SVG, one file each, plus font files or exact download instructions.
-{{EXTRA_DELIVERABLES}}
+- **Everything the design brief's Deliverables list asks for** (mockups and screenshots for every
+  page and state at the widths and themes it lists, `DESIGN-NOTES.md`, `TOKENS.md`, `SPEC.md`,
+  assets and fonts, and the other files it names), as one final package.
 
 You may be asked follow-up questions from the developer through the PM later. Keep your reasoning
 documented so you can answer them. End with a short summary, a statement of whether you opened

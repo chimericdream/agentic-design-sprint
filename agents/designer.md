@@ -44,7 +44,7 @@ reasonable assumption, state it in your handoff, and continue.
   width and theme the brief lists for horizontal scroll, clipped text, contrast and tap targets.
 - Mockups are hand-authored static HTML and CSS that open by double-clicking, with no build step.
 - Everything you invent must be buildable with standard web technology and the stack the brief
-  names. Fonts must be free to self-host, with their licence files.
+  names. Fonts must be free to self-host, with their license files.
 - The stylesheet is the source of truth where it and your documents disagree, so keep them in step.
 - Do not invent product facts, users, testimonials or prices.
 

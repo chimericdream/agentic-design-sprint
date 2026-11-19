@@ -1,9 +1,7 @@
 <!--
-TEMPLATE NOTES (the init skill removes every HTML comment before saving):
-- Fill {{TOKENS}}. Blocks wrapped in <!-- if: redesign --> ... <!-- /if --> are kept only in that mode
-  (same for "new", "app", "site"). Renumber lists afterwards.
-- The standing rules every developer follows (QUESTIONS FOR PM, machine safety, no redesigning)
-  live in the developer agent definition. This brief adds what is specific to the project.
+Template notes live in the design-sprint-init skill, references/tokens.md. The standing rules every
+developer follows (QUESTIONS FOR PM, machine safety, no redesigning) live in the developer agent
+definition. This brief adds what is specific to the project. Remove this comment.
 -->
 
 # Developer brief: build {{PRODUCT_NAME}}
@@ -19,7 +17,8 @@ here, do not decide alone. End your turn with a `QUESTIONS FOR PM` block. The PM
 questions to the designer and bring back the answer, and will ask the human about product
 decisions. You can't talk to anyone else.
 
-Read `AGENTS.md` and `CLAUDE.md` first and follow them. {{FRAMEWORK_NOTE}}
+Read the repository's guidance files (`AGENTS.md` and `CLAUDE.md`, whichever exist) first and follow
+them. {{FRAMEWORK_NOTE}}
 
 ## What is in the package
 
@@ -27,7 +26,10 @@ Start with `SPEC.md`. It is the developer handoff: tokens, the component invento
 screen-by-screen (or page-by-page) rules, states, accessibility notes, a voice guide and a list of
 what is flexible. `TOKENS.md` and `DESIGN-NOTES.md` explain the choices. `mockups/` holds static
 HTML and CSS you can open by double-clicking, and `screenshots/` holds PNGs. Where the spec and the
-mockup stylesheet disagree, the stylesheet wins. {{PACKAGE_EXTRAS}}
+mockup stylesheet disagree, the stylesheet wins.
+<!-- if: redesign -->
+`PROPOSALS.md` lists ideas that need new features. **Do not build anything in it.**
+<!-- /if -->
 <!-- if: copywriter -->
 
 The package also holds the **copy deck** in `copy/`: the approved words for every page and state, a
@@ -52,20 +54,28 @@ updated to match.
   Never weaken an assertion to make it pass.
 <!-- /if -->
 <!-- if: new -->
-- **Self-contained.** {{SELF_CONTAINED_RULE}}
-- **Content.** You are responsible for making any docs or tutorial text accurate. Verify every
-  step, command, default and claim against the repo, prefer what the code and config actually do
-  over older plans, and report differences to the PM. Only make claims the product supports.
 - **Screenshot placeholders.** Build one reusable placeholder component that follows the design:
   fixed aspect ratio, alt text, and the capture notes rendered **inside** the placeholder box so they
   never change the layout. Swapping in a real image must be a matter of dropping a file at a
   documented path, and the notes go away with the placeholder. Keep `PLACEHOLDERS.md` in step with
   what is actually on the pages.
+- **Content.** Only make claims the product supports. No invented testimonials, user counts or
+  prices.
+<!-- /if -->
+<!-- if: code-in-repo -->
+- **Accuracy.** You are responsible for making any docs or tutorial text accurate. Verify every
+  step, command, default and claim against the code and config in this repository, prefer what
+  they actually do over older plans, and report differences to the PM.
+<!-- /if -->
+<!-- if: no-code-in-repo -->
+- **Accuracy.** The product's code is not in this repository, so you cannot verify docs or tutorial
+  text against it. Build the text as written, keep a list of every command, default and step the
+  copy or design marks as unconfirmed, and put that list in your final report for the human to check.
 <!-- /if -->
 - **Tokens.** Express the design's tokens as {{TOKEN_CONVENTION}}, light and dark, and mirror them
   in the component library's theme. Don't hard-code colors in component styles. Delete tokens
   nothing uses.
-- **Fonts and assets are self-hosted** in {{ASSET_LOCATION}}, with each font's licence file. Remove
+- **Fonts and assets are self-hosted** in {{ASSET_LOCATION}}, with each font's license file. Remove
   fonts the new design no longer uses. Never load anything from a CDN or any third party at runtime.
 - **Light and dark** themes follow the system setting with a manual choice, with no flash of the
   wrong theme on load.
@@ -83,7 +93,7 @@ updated to match.
 3. **Build in slices and stop after each one with a short report.** The PM tells the human, and the
    human approves slice 1 before the next starts. For later slices, end your turn when the slice is
    done and report, then continue when told.
-{{SLICES}}
+   {{SLICES}}
 <!-- if: redesign -->
 4. Compare each screen you build with the mockups' PNGs side by side, using the same data the
    designers saw. {{SCREENSHOT_COMMAND_NOTE}} Also check in a real browser at roughly 360, 390, 768,
@@ -104,16 +114,16 @@ updated to match.
 
 ## Git, PR and CI
 
-Open a PR against `{{MAIN_BRANCH}}` and watch CI until it is green. {{CI_NOTES}} **Do not merge.**
-The human merges. {{MERGE_NOTE}}
+Open a PR against `{{MAIN_BRANCH}}`. {{CI_NOTES}} **Do not merge.** The human merges.
+{{MERGE_NOTE}}
 
 ## Definition of done
 
 - Every screen, page and state in the design's index exists, matches the mockup at 390 and 1440 px
   in light and dark where the design shows them, and works at 360, 768 and 1024 px.
-{{DONE_EXTRA}}
-- {{VERIFY_SENTENCE}}
-- No third-party runtime requests. Fonts and assets are self-hosted with licences. {{TRADE_DRESS_DONE}}
+- These pass locally, with the output pasted in the PR: {{VERIFY_COMMANDS}}
+- No third-party runtime requests. Fonts and assets are self-hosted with licenses. Nothing in the
+  build breaks the trade-dress and privacy rules above.
 - The accessibility pass is done.
 - The docs above are updated.
 - The PR is open with a clear summary: what changed, every deviation from the design with its
