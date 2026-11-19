@@ -69,9 +69,15 @@ When a synthesis designer receives the independent designs:
 
 ## The optional hook
 
-`hooks/hooks.json` ships a `PreToolUse` check that denies a designer's file reads and writes
-outside its own directory and denies obvious path escapes in shell commands. It needs
-`.design-sprint-sandbox` in the designer's directory (the PM creates it in Phase 0, see
-`phases.md`). It is a seatbelt, not a sandbox: a shell command can still reach anywhere the
-operating system allows. Keep the instructions as the primary control and read the designer's
-handoff statement either way.
+`hooks/hooks.json` ships a `PreToolUse` check (`hooks/isolation-guard.mjs`, needs `node`) that runs
+only for `design-sprint:designer` subagents. It needs no per-project setup. It binds a designer to
+the first `<anything>-project/design/<dir>/` it touches, which is the directory the PM gave it, then
+denies any other path inside the repo (source, docs, other designers' directories) and any shell
+command that names another designer's directory. Paths outside the repo are allowed, so design
+skills and font downloads still work. If the hook denies a call, the designer sees the reason and
+should ask via `QUESTIONS FOR PM`.
+
+It is a seatbelt, not a sandbox. A shell command can still reach anywhere the operating system
+allows, a relative `ls` runs in the repo root, and the hook fails open if it can't read its input.
+Keep the instructions as the primary control and read the designer's handoff statement either
+way. Set `DESIGN_SPRINT_GUARD=off` to disable it.
