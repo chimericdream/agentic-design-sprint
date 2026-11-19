@@ -1,10 +1,10 @@
-// PreToolUse guard for design-sprint designers.
+// PreToolUse guard for design-sprint designers and the copywriter.
 //
-// A designer subagent may touch only its own directory inside the repo:
-//   <repo>/<anything>-project/design/<designer-dir>/
+// These subagents may touch only their own directory inside the repo:
+//   <repo>/<anything>-project/design/<own-dir>/
 // The guard learns which directory is "its own" from the first path it touches there (the PM tells
-// the designer its directory, and the designer starts by reading its own inputs/). After that it
-// denies repo paths outside that directory, including other designers' directories.
+// the agent its directory, and the agent starts by reading its own inputs/). After that it
+// denies repo paths outside that directory, including other agents' directories.
 //
 // Paths outside the repo (design skill caches, font downloads, browser binaries) are allowed.
 // This is a seatbelt, not a sandbox: shell commands are only checked for explicit paths.
@@ -60,7 +60,7 @@ function stateFile(input) {
 function main() {
   if (process.env.DESIGN_SPRINT_GUARD === "off") return allow();
   const input = JSON.parse(readFileSync(0, "utf8"));
-  if (!/(^|:)designer$/.test(String(input.agent_type || ""))) return allow();
+  if (!/(^|:)(designer|copywriter)$/.test(String(input.agent_type || ""))) return allow();
   if (!input.agent_id) return allow();
 
   const cwd = input.cwd || process.cwd();
