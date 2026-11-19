@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "design-sprint",
+  "description": "Run a mockup-first design sprint: independent designers work in isolation, a human picks a design at a review gate, then a developer builds it. The main session acts as the project manager.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Bill Parrott"
+  },
+  "license": "MIT",
+  "keywords": ["design", "mockups", "project-management", "subagents", "workflow"]
+}
