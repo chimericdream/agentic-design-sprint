@@ -34,8 +34,8 @@ Revision requests follow." Log that you did.
 
 ## Phase 0.5: copy (only if `PROJECT.md` says there is a copywriter)
 
-1. Create `<dir>/design/copywriter/` and send the copywriter its brief (the copy brief + the design
-   brief), its directory path and the machine-safety reminder. It receives no designs, because none
+1. Create `<dir>/design/copywriter/` and send the copywriter its brief (the copy brief + the content
+   pack), its directory path and the machine-safety reminder. It receives no designs, because none
    exist yet.
 2. Answer `QUESTIONS FOR PM` as the isolation rules describe. Product facts and tone questions go
    to the human.
@@ -50,7 +50,7 @@ Revision requests follow." Log that you did.
 
 ## Phase 1: independent designs
 
-1. Send each designer its brief (design brief + addendum), its directory path and the machine-safety
+1. Send each designer its brief (design brief + content pack + addendum), its directory path and the machine-safety
    reminder. They receive no other path. Run in parallel unless `PROJECT.md` says one at a time.
 2. Answer `QUESTIONS FOR PM` as the isolation rules describe. Facts you verify in the code go back
    as facts. Hold taste and product questions for the human, and collect them for the gate. With a
@@ -68,7 +68,7 @@ Revision requests follow." Log that you did.
 ## Phase 1.5: synthesis (only if `PROJECT.md` says so)
 
 1. Prepare the synthesis designer's directory as `isolation-rules.md` describes (random A/B
-   mapping, authorship stripped, scan logged). Send its brief, the design brief, its directory path,
+   mapping, authorship stripped, scan logged). Send its brief, the design brief, the content pack, its directory path,
    the machine-safety reminder, and any answers the human gave at Gate 1. With a copywriter, also
    copy the approved deck into its `inputs/copy/`.
 2. Answer questions as before. When it finishes, check completeness against its deliverables and
@@ -97,8 +97,8 @@ designer's directory. The other designers are finished. Repeat until the human a
 2. Copy the package to the final path in `PROJECT.md`, and with a copywriter copy the final
    `copy/` folder in beside it, leaving out `inputs/`, `feedback/`, generator
    scripts (`tools/`), skill caches and anything else not meant to ship, unless the human wants them.
-3. Leave out of the final copy any file the brief calls non-durable (for example a proposals list
-   stays with the human).
+3. Keep `PROPOSALS.md` in the final package for the human. The developer brief says it is built
+   from nothing and not copied into the repo's durable design reference.
 4. Commit if the final path is tracked.
 5. If the human pre-approved starting the build once the final package is saved, say so in the log
    and continue. Otherwise stop and ask.

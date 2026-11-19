@@ -52,11 +52,12 @@ docs/<name>-project/
 ├─ PROJECT.md                     configuration the PM reads every session
 ├─ LOG.md                         the PM's running log
 └─ prompts/
-   ├─ 00-copy-brief.md                 (only with a copywriter)
+   ├─ 00-content-pack.md               product facts, pages, tone, writing rules
    ├─ 01-design-brief.md
    ├─ 02-designers-addendum.md
    ├─ 03-synthesis-designer-brief.md   (only with a synthesis designer)
-   └─ 04-developer-brief.md            (only with a developer)
+   ├─ 04-developer-brief.md            (only with a developer)
+   └─ 05-copy-brief.md                 (only with a copywriter)
 ```
 
 Run the sprint in a fresh session so the PM starts with a clean context. Review the generated
@@ -69,6 +70,7 @@ briefs first, because they are the designers' only knowledge of the product.
 skills/design-sprint/            PM playbook, thin
   references/                    phases.md, isolation-rules.md, gate-checklists.md
 skills/design-sprint-init/       interviews you, fills the templates
+  references/tokens.md           every token, flag and marker rule
 skills/copy-baseline/            minimum copywriting rules and the copy deck format
 agents/copywriter.md             standing rules for the copywriter
 agents/designer.md               standing rules for designers

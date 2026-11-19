@@ -12,7 +12,7 @@ Do not judge aesthetics.
 - [ ] Every screen or page in the index has a mockup (and the brief's required widths and themes).
 - [ ] Every state the brief lists is drawn.
 - [ ] `SPEC.md` has every section the brief lists. `TOKENS.md`, `DESIGN-NOTES.md` and the index file exist.
-- [ ] Assets are separate files. Fonts are included with licences or exact download instructions.
+- [ ] Assets are separate files. Fonts are included with licenses or exact download instructions.
 - [ ] Screenshots exist for what the brief requires and match the naming scheme.
 - [ ] The designer's handoff states whether it opened anything outside its directory.
 - [ ] (With a copywriter) `COPY-CHANGES.md` exists. Spot-check that on-page text matches the deck
