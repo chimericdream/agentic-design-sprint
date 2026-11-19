@@ -28,6 +28,17 @@ screen-by-screen (or page-by-page) rules, states, accessibility notes, a voice g
 what is flexible. `TOKENS.md` and `DESIGN-NOTES.md` explain the choices. `mockups/` holds static
 HTML and CSS you can open by double-clicking, and `screenshots/` holds PNGs. Where the spec and the
 mockup stylesheet disagree, the stylesheet wins. {{PACKAGE_EXTRAS}}
+<!-- if: copywriter -->
+
+The package also holds the **copy deck** in `copy/`: the approved words for every page and state, a
+voice guide (`VOICE.md`), length limits and a claims table. It is the source of truth for text.
+Use it as written. If you need copy that isn't in it, or a line that doesn't work in the build, do
+not write or change it yourself: end your turn with a `QUESTIONS FOR PM` block and the PM will have
+the copywriter handle it. The designer's `COPY-CHANGES.md` records fit edits already made. One
+exception: when checking text against the product shows it is factually wrong (a command, a default,
+a step), fix it in the build and list every such fix in your report, so the PM can have the deck
+updated to match.
+<!-- /if -->
 
 ## Constraints
 

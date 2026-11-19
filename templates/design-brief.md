@@ -2,7 +2,9 @@
 TEMPLATE NOTES (the init skill removes every HTML comment before saving the brief):
 - {{TOKENS}} are filled from the interview. Never leave one in the saved file.
 - Blocks wrapped in <!-- if: redesign --> ... <!-- /if --> are kept only in that mode. Same for
-  "new", "app", "site", "motif", "privacy", "brand-family". Delete the block otherwise.
+  "new", "app", "site", "motif", "privacy", "brand-family", "copywriter", "no-copywriter". Delete
+  the block otherwise. "copywriter" means the project has a copywriter whose approved copy deck is
+  in each designer's inputs/copy/.
 - Renumber the Deliverables list after removing blocks, and make sure no sentence is left dangling.
 - The standing rules every designer follows (isolation, QUESTIONS FOR PM, machine safety, the
   handoff statement) live in the designer agent definition, not here. This brief only adds what is
@@ -25,6 +27,10 @@ It contains an `inputs/` folder with everything you need: {{INPUTS_SUMMARY}}.
 <!-- /if -->
 <!-- if: new -->
 Everything you need is in this brief. {{NO_REFERENCE_NOTE}}
+<!-- /if -->
+<!-- if: copywriter -->
+Its `inputs/` folder holds the approved copy deck in `inputs/copy/`: the words for every page and
+state, a voice guide and length limits.
 <!-- /if -->
 That directory sits inside a code repository, and you are expected **not to browse it**. Do not open
 source code, configuration, documentation, {{OFF_LIMITS_EXTRA}} or any directory other than your
@@ -159,16 +165,38 @@ The notes say:
 3. **Viewport and theme:** phone or desktop, light or dark.
 4. **Focus:** what the viewer should notice, and what to crop to.
 
+<!-- if: no-copywriter -->
 Also write alt text for each. Keep a single list of every placeholder, with an ID, file name and the
 full capture notes, in `PLACEHOLDERS.md`.
+<!-- /if -->
+<!-- if: copywriter -->
+The copy deck's `screenshots.md` already lists the screenshots each page needs, with IDs, alt text
+and capture notes. Draw a placeholder for each. You may add or drop entries, and shorten a note to
+fit its box, but record every such change with the reason. Keep a single list of every placeholder,
+with its ID, file name and the full capture notes, in `PLACEHOLDERS.md`.
+<!-- /if -->
 <!-- /if -->
 
 ## Writing
 
+<!-- if: no-copywriter -->
 Write real copy for everything you mock up. Plain, specific, warm and human. No filler or hype. Use
 {{SPELLING}} spelling. Avoid "it's not X, it's Y" reveals, strings of three adjectives, and stock
 words like "seamlessly" and "unlock". Do not make claims beyond the product facts, and do not
 invent testimonials, user counts or prices. Make the voice clear, because a developer will extend it.
+<!-- /if -->
+<!-- if: copywriter -->
+A copywriter has already written the copy. It is in `inputs/copy/`, and `INDEX.md` there says where
+each page or screen is. **Use it as written.** Do not write your own copy, and do not invent text
+the deck doesn't have. If a state or element has no copy, end your turn with a `QUESTIONS FOR PM`
+block, and the PM will have it written.
+
+You may make **fit edits** only: shortening a line that cannot fit its place within the deck's
+length limits, or splitting one block into two where the layout needs it. Never change a claim, a
+term in the deck's terminology list, or the voice. Record every edit in `COPY-CHANGES.md` with the
+deck's text, your text and why, because the copywriter reviews that list. If a limit in the deck is
+wrong for your layout, say so there instead of quietly exceeding it.
+<!-- /if -->
 
 ## Deliverables
 
@@ -194,6 +222,10 @@ All inside your working directory{{OUTSIDE_INPUTS}}:
 <!-- /if -->
 <!-- if: new -->
 5. **`PLACEHOLDERS.md`:** as above.
+<!-- /if -->
+<!-- if: copywriter -->
+6. **`COPY-CHANGES.md`:** every fit edit you made to the copy deck (deck text, your text, reason),
+   or a line saying you made none.
 <!-- /if -->
 7. **Assets** as separate SVG files, and the font files with their licences (or exact download
    instructions).
@@ -229,7 +261,14 @@ project manager relays, so be precise.
 - **A copy-change table** (screen, old text, new text, reason) so the developer and the test suite
   can follow.
 <!-- /if -->
+<!-- if: no-copywriter -->
 - **A voice and tone guide** with examples.
+<!-- /if -->
+<!-- if: copywriter -->
+- **Where each piece of copy appears,** by the deck's page and section names, so the developer can
+  map the copy deck onto the components. The voice guide is the deck's `VOICE.md`. Do not write
+  another.
+<!-- /if -->
 - **A list of what is deliberately flexible,** so the developer knows what they may adapt.
 
 When you finish, end with a short summary, a statement of whether you opened anything outside your

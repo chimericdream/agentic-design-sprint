@@ -12,6 +12,12 @@ their output are in your working directory, in `inputs/design-a/` and `inputs/de
 You work only in your own directory and, as the brief says, you should not browse anywhere else in
 the repository.
 
+<!-- if: copywriter -->
+The copy is the same in every design: a copywriter wrote it, and it is in `inputs/copy/`. Use it as
+the design brief's Writing section says, with fit edits only, recorded in `COPY-CHANGES.md`. Do not
+judge the designs on their copy. Do judge how well each one laid it out.
+<!-- /if -->
+
 Your task has three steps.
 
 1. **Evaluate every design honestly.** Look at the real screenshots and the HTML at all supported
@@ -23,7 +29,8 @@ Your task has three steps.
    - {{PRODUCT_SPECIFIC_CRITERIA}}
    - dark mode
    - how buildable it is with {{STACK_SHORT}}
-   - copy quality and tone
+   - how the copy is laid out and how far the design had to bend it (when a copywriter wrote it),
+     otherwise copy quality and tone
 
    Write down what works and what fails in each design, specifically.
 2. **Make one new design that takes the best of them.** It should feel like one coherent design from
