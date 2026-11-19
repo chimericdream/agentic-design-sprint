@@ -21,6 +21,10 @@ you ──► PM (the main session, running /design-sprint)
 
 1. **Phase 0.** The PM stages the designers' inputs (screenshots of the current product, or a
    content pack) and one working directory per designer.
+   **Phase 0.5 (optional).** A copywriter writes the real copy first, from the content pack: a copy
+   deck with a voice guide, length limits and a claims table. You can review it at Gate 0.5. Every
+   designer then lays out the same words and may make only recorded fit edits. Recommended for
+   marketing and docs sites, usually skipped for app redesigns.
 2. **Phase 1.** Designers work in parallel, each producing static HTML mockups, screenshots, tokens
    and a developer handoff (`SPEC.md`). The PM checks **completeness only**, never taste.
 3. **Gate 1.** You review the designs, choose one, and ask for revisions if you like.
@@ -48,6 +52,7 @@ docs/<name>-project/
 ├─ PROJECT.md                     configuration the PM reads every session
 ├─ LOG.md                         the PM's running log
 └─ prompts/
+   ├─ 00-copy-brief.md                 (only with a copywriter)
    ├─ 01-design-brief.md
    ├─ 02-designers-addendum.md
    ├─ 03-synthesis-designer-brief.md   (only with a synthesis designer)
@@ -64,6 +69,8 @@ briefs first, because they are the designers' only knowledge of the product.
 skills/design-sprint/            PM playbook, thin
   references/                    phases.md, isolation-rules.md, gate-checklists.md
 skills/design-sprint-init/       interviews you, fills the templates
+skills/copy-baseline/            minimum copywriting rules and the copy deck format
+agents/copywriter.md             standing rules for the copywriter
 agents/designer.md               standing rules for designers
 agents/developer.md              standing rules for the developer
 templates/                       briefs, PROJECT.md and LOG.md with {{TOKENS}}
@@ -84,6 +91,8 @@ about them are in `skills/design-sprint/references/isolation-rules.md`.
 - Claude Code with plugin support. Agent models come from `PROJECT.md` and need access to the
   models you choose.
 - `node` on the path, only if you want the isolation hook.
+- Optional: the `copywriting` and `humanizer:humanizer` skills. The copywriter uses them when they
+  are installed and works from the bundled `copy-baseline` skill either way.
 - A git repository for the project, with a feature branch for the sprint.
 
 ## Status

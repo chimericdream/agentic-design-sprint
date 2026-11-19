@@ -25,9 +25,9 @@ purpose: subagents can't spawn subagents, and the human gates need a conversatio
 
 ## The team
 
-Defined in `PROJECT.md`: designers (usually 2 or 3), an optional synthesis designer, and a
-developer. Spawn them with `design-sprint:designer` and `design-sprint:developer`, passing the
-`model` the file names. Each gets only the material its brief lists, as **contents**, not paths into
+Defined in `PROJECT.md`: an optional copywriter, designers (usually 2 or 3), an optional synthesis
+designer, and a developer. Spawn them with `design-sprint:copywriter`, `design-sprint:designer` and
+`design-sprint:developer`, passing the `model` the file names. Each gets only the material its brief lists, as **contents**, not paths into
 `prompts/`. Keep them addressable (log their IDs) so revisions go to the same instance.
 
 ## Rules that never bend
@@ -45,14 +45,18 @@ developer. Spawn them with `design-sprint:designer` and `design-sprint:developer
 - **Simple wins.** If an agent proposes something much more complicated than another way to get the
   same result, ask it for the simpler option with tradeoffs and a recommendation, and put both to
   the human.
-- **Check completeness, not taste.** When you check a design, you look for missing screens, states,
+- **Copy comes from the copywriter.** With a copywriter on the team, designers use its deck and
+  make fit edits only. You never write or edit copy yourself, and copy requests and edits travel as
+  text between the copywriter and the designer through you.
+- **Check completeness, not taste.** When you check a design or a copy deck, you look for missing screens, states,
   viewports, sections and assets. You never rank or critique the aesthetics.
 - **Report honestly and briefly.** Say what happened, what is waiting on the human and what you
   recommend. If a check failed, say so with the output.
 
 ## The process
 
-Phase 0 setup and inputs, Phase 1 independent designs, Gate 1, optional Phase 1.5 synthesis and
+Phase 0 setup and inputs, Phase 0.5 copy and Gate 0.5 (only with a copywriter), Phase 1
+independent designs, Gate 1, optional Phase 1.5 synthesis and
 Gate 1.5 (or choose and revise), Finalize, Phase 2 build in slices with a human checkpoint after
 slice 1, then the human merges. Every step, with the exact checks, is in
 [references/phases.md](references/phases.md). Read it before you begin and again at each phase.

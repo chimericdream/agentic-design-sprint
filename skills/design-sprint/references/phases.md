@@ -4,8 +4,8 @@ Every project-specific value (names, models, paths, commands, slices) comes from
 `PROJECT.md`. Paths below are relative to the repo root and use `<dir>` for the project directory
 (`docs/<name>-project/`).
 
-How to send a brief: spawn the agent with the Agent tool, `subagent_type` `design-sprint:designer`
-or `design-sprint:developer`, the `model` from `PROJECT.md` (omit it to inherit), and a prompt made of
+How to send a brief: spawn the agent with the Agent tool, `subagent_type` `design-sprint:copywriter`,
+`design-sprint:designer` or `design-sprint:developer`, the `model` from `PROJECT.md` (omit it to inherit), and a prompt made of
 the **contents** of its brief files, its directory path and the machine-safety reminder. Never send
 a path into `<dir>/prompts/`. Never forward your own context or another agent's reasoning. Write
 each agent's ID and role in the log so you can reach it again with SendMessage.
@@ -32,12 +32,31 @@ Revision requests follow." Log that you did.
 6. If the project keeps `design/` out of git (large screenshots), make sure the ignore line is
    committed before designers start producing files.
 
+## Phase 0.5: copy (only if `PROJECT.md` says there is a copywriter)
+
+1. Create `<dir>/design/copywriter/` and send the copywriter its brief (the copy brief + the design
+   brief), its directory path and the machine-safety reminder. It receives no designs, because none
+   exist yet.
+2. Answer `QUESTIONS FOR PM` as the isolation rules describe. Product facts and tone questions go
+   to the human.
+3. When it finishes, check the deck for completeness only (see `gate-checklists.md`) and send gaps
+   back. Do not edit the copy yourself.
+4. Record in the log: the voice in one sentence, the pages and states covered, claims marked
+   unconfirmed, the outside-reads statement, and any incident.
+5. **Gate 0.5**, if `PROJECT.md` turns the copy review gate on. Stop and see `gate-checklists.md`.
+   Route the human's revisions to the copywriter and repeat.
+6. When the deck is approved, copy its `copy/` folder to `<dir>/design/inputs/copy/` and into each
+   designer's `inputs/copy/` before any designer starts. Add a line for it to `inputs/README.md`.
+
 ## Phase 1: independent designs
 
 1. Send each designer its brief (design brief + addendum), its directory path and the machine-safety
    reminder. They receive no other path. Run in parallel unless `PROJECT.md` says one at a time.
 2. Answer `QUESTIONS FOR PM` as the isolation rules describe. Facts you verify in the code go back
-   as facts. Hold taste and product questions for the human, and collect them for the gate.
+   as facts. Hold taste and product questions for the human, and collect them for the gate. With a
+   copywriter, a designer who finds missing copy gets it from the copywriter through you: send the
+   copywriter the request in words, update the deck and every designer's `inputs/copy/` the same
+   way, and tell each designer the file changed.
 3. When a designer finishes, check its package against the brief's deliverables checklist for
    **completeness only**: missing screens, states, viewports, `SPEC.md` sections, assets or fonts.
    Send gaps back to that designer. **Do not judge or rank aesthetics.**
@@ -50,7 +69,8 @@ Revision requests follow." Log that you did.
 
 1. Prepare the synthesis designer's directory as `isolation-rules.md` describes (random A/B
    mapping, authorship stripped, scan logged). Send its brief, the design brief, its directory path,
-   the machine-safety reminder, and any answers the human gave at Gate 1.
+   the machine-safety reminder, and any answers the human gave at Gate 1. With a copywriter, also
+   copy the approved deck into its `inputs/copy/`.
 2. Answer questions as before. When it finishes, check completeness against its deliverables and
    record the outcome.
 3. **Gate 1.5.** Stop. Present the package and its evaluation. Revisions go back to the synthesis
@@ -68,7 +88,14 @@ designer's directory. The other designers are finished. Repeat until the human a
 1. Check the approved package for completeness once more: every screen or page in the index has a
    mockup, `SPEC.md` has every section the brief lists, and every revision the human asked for is in.
    Record the outcome in the log.
-2. Copy the package to the final path in `PROJECT.md`, leaving out `inputs/`, `feedback/`, generator
+1a. **Copy reconciliation** (only with a copywriter). Send the copywriter the chosen designer's
+   `COPY-CHANGES.md` as text, with no design material. It accepts each edit or proposes a
+   replacement. Relay any replacement to the designer, who applies it or says why it doesn't fit.
+   When the two agree, have the copywriter update its deck to match what the mockups say, and
+   re-check that every string in the package's `SPEC.md` and mockups matches the deck apart from
+   recorded edits. Record the outcome in the log.
+2. Copy the package to the final path in `PROJECT.md`, and with a copywriter copy the final
+   `copy/` folder in beside it, leaving out `inputs/`, `feedback/`, generator
    scripts (`tools/`), skill caches and anything else not meant to ship, unless the human wants them.
 3. Leave out of the final copy any file the brief calls non-durable (for example a proposals list
    stays with the human).
@@ -95,7 +122,9 @@ Skip this phase if `PROJECT.md` says the sprint is design-only.
    not let slice 2 start until the human approves. Route revisions to the developer and design
    questions to the chosen designer.
 5. Relay developer questions about the design to the chosen designer (and only that designer) and
-   the answers back verbatim. If the developer reports that a design decision isn't buildable in the
+   the answers back verbatim. Relay questions about missing or unworkable copy to the copywriter the
+   same way, then update the deck in the final package. Factual corrections the developer reports
+   go to the copywriter so the deck matches the build. If the developer reports that a design decision isn't buildable in the
    stack or conflicts with a constraint, ask the designer for a revision and relay it. If something
    needs a product decision, a new data field, a schema change or a behavior change, ask the human.
 6. When the developer reports done, verify its definition of done once more and run the full check

@@ -15,10 +15,33 @@ Do not judge aesthetics.
 - [ ] Assets are separate files. Fonts are included with licences or exact download instructions.
 - [ ] Screenshots exist for what the brief requires and match the naming scheme.
 - [ ] The designer's handoff states whether it opened anything outside its directory.
+- [ ] (With a copywriter) `COPY-CHANGES.md` exists. Spot-check that on-page text matches the deck
+      apart from the recorded fit edits. Do not judge the edits yourself: the copywriter reviews them
+      at Finalize.
 - [ ] (Revisions) Every change the human asked for is in, with the affected documents updated.
 
 Send gaps back to the designer before the gate. Extras (a `tools/` folder, generators) are noted,
 not blocked.
+
+## Copy completeness check (Phase 0.5)
+
+Check the copy deck for completeness only. Do not edit or rank the writing.
+
+- [ ] `INDEX.md` lists every page, screen and state in the design brief, and each has a file.
+- [ ] `VOICE.md` has the voice, examples, a terminology list, the spelling rule and words to avoid.
+- [ ] Headlines, buttons and labels that could break a layout have a target and a hard maximum length.
+- [ ] `CLAIMS.md` traces every factual claim to a product fact. Unconfirmed items are listed.
+- [ ] Sites: each page has a title and meta description. Redesigns: `CHANGES.md` lists each label change.
+- [ ] `screenshots.md` exists when the product is shown without real screenshots, with IDs, alt text and four short notes each.
+- [ ] The handoff states whether it opened anything outside its directory.
+- [ ] A scan finds no invented numbers, users, testimonials or prices, and no spelling that breaks the rule.
+
+## Gate 0.5: copy deck
+
+Tell the human where the deck is and that `INDEX.md` is the way in, the voice in one sentence, the
+claims marked unconfirmed with your recommendation for each, and any `QUESTIONS FOR PM` the
+copywriter raised that need their answer. Say that approving the deck sends the same words to every
+designer, so wrong facts here repeat in every design. Record the decision and each revision request.
 
 ## Gate 1: independent designs
 

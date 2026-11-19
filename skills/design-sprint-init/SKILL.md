@@ -43,7 +43,11 @@ option each time, because the human prefers simpler setups.
 5. **Synthesis designer:** yes or no. Recommend *no* when the human just wants to pick one design;
    recommend *yes* when they want the best of several.
 6. **Developer:** yes or no (a design-only sprint stops after the final package). Model.
-7. **The PM** runs in the main session, so no model choice here.
+7. **Copywriter:** yes or no, and the model. Recommend *yes* for sites with marketing, docs or
+   tutorial pages, where real words shape the layout. Recommend *no* for app redesigns, where the
+   copy is mostly existing labels and microcopy that live with the design. If yes, ask whether the
+   human wants to review the copy deck before the designers start (recommend yes).
+8. **The PM** runs in the main session, so no model choice here.
 
 **Round 2: the product** (draft from the repo, then confirm)
 
@@ -82,6 +86,7 @@ option each time, because the human prefers simpler setups.
 Create `docs/<name>-project/` with:
 
 - `PROJECT.md` from `${CLAUDE_PLUGIN_ROOT}/templates/PROJECT.md`.
+- `prompts/00-copy-brief.md` from `templates/copy-brief.md`, only with a copywriter.
 - `prompts/01-design-brief.md` from `templates/design-brief.md`.
 - `prompts/02-designers-addendum.md` from `templates/designers-addendum.md`.
 - `prompts/03-synthesis-designer-brief.md` from `templates/synthesis-designer-brief.md`, only with
@@ -94,7 +99,9 @@ How to fill a template:
 1. Replace every `{{TOKEN}}` with real text from the interview. No token may survive. Where a token
    has no answer, delete its sentence, don't leave it blank.
 2. Keep an `<!-- if: x -->` block only when `x` applies (`redesign`, `new`, `app`, `site`,
-   `motif`, `brand-family`, `privacy`, `no-runtime-third-party`, `synthesis`, `no-synthesis`).
+   `motif`, `brand-family`, `privacy`, `no-runtime-third-party`, `synthesis`, `no-synthesis`,
+   `copywriter`, `no-copywriter`, `screenshots`). Use `screenshots` in the copy brief when the
+   product is shown but no real screenshots exist.
    Delete the others entirely.
 3. Remove every HTML comment, including the template notes at the top.
 4. Renumber lists, fix any dangling sentence, and reread each file as the agent will.

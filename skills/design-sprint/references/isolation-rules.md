@@ -4,6 +4,11 @@ The PM enforces these. Designers cannot see the PM's conversation because they a
 most of the isolation is structural. The rest depends on instructions, and the optional hook in
 `hooks/` backs those instructions up with a check.
 
+The copywriter (if the project has one) is isolated the same way: its own directory, no repo
+browsing, no designs, questions through you. It sees nothing a designer produces, and designers
+never see it. The only thing that flows between them is the approved copy deck, which you copy into
+each designer's `inputs/copy/`, plus copy edits and requests you relay as text.
+
 ## The rules
 
 1. **Designers see the product only through the inputs you give them.** Each works only in its own
@@ -70,7 +75,7 @@ When a synthesis designer receives the independent designs:
 ## The optional hook
 
 `hooks/hooks.json` ships a `PreToolUse` check (`hooks/isolation-guard.mjs`, needs `node`) that runs
-only for `design-sprint:designer` subagents. It needs no per-project setup. It binds a designer to
+only for `design-sprint:designer` and `design-sprint:copywriter` subagents. It needs no per-project setup. It binds a designer to
 the first `<anything>-project/design/<dir>/` it touches, which is the directory the PM gave it, then
 denies any other path inside the repo (source, docs, other designers' directories) and any shell
 command that names another designer's directory. Paths outside the repo are allowed, so design
