@@ -77,6 +77,8 @@ option each time, because the human prefers simpler setups.
 - The pages or screens to cover, **in priority order** (this decides slice 1 and what a synthesis
   designer weighs), and the states that a normal run doesn't show, with **one line per state on what
   it contains** (fields, next actions). If the human doesn't know, the pack says so.
+- Which screens and actions each role can reach, where roles differ.
+- A site: the header navigation items and what the mobile menu holds.
 - Redesign: what is wrong today (the human's own words), what must be kept, how screenshots are
   produced (and whether to run the command now), and what gets staged as inputs.
 - A brand family to extend (an existing site or design system), if any, and which files become an input.
@@ -101,6 +103,9 @@ option each time, because the human prefers simpler setups.
 
 - Feature branch name and the main branch. Who merges (always the human) and what a merge triggers.
 - Whether CI exists, what its jobs are called, and what a PR must show.
+- Whether the verification commands run today (the tools are installed). If not, say so in
+  `PROJECT.md`. Whether the developer may add dependencies (icon or font packages), and what hosting
+  configuration the developer prepares (build command, publish directory) versus what the human does.
 - The verification commands (lint, format, typecheck, tests, build, e2e), taken from the repo, and
   the directory each runs from. Whether the lint and format checks cover the design files that will
   be committed (recommend excluding hand-authored mockups from them).
@@ -147,8 +152,9 @@ How to fill a template:
 5. Never put project secrets or tokens in a brief. Briefs are sent to subagents and may be committed.
 
 If the project keeps `design/` out of git, add `docs/<name>-project/design/` to `.gitignore`
-(create the file if it does not exist). If the final package lands in a tracked location and PNGs are
-not committed, add an ignore rule for them there too (for example `<final path>/**/*.png`).
+(create the file if it does not exist). If PNGs are not committed and any tracked location would receive
+them (the final package, or the durable design files), add an ignore rule for them there too (for
+example `<path>/**/*.png`).
 
 ## 4. Review, scan, commit, hand over
 

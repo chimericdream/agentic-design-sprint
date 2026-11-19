@@ -19,7 +19,9 @@ holds everything you may rely on about the product.
 
 ## Product facts
 
-Do not invent facts beyond this list.
+Do not invent facts beyond this list.<!-- if: site --> The one exception is documentation and
+tutorial steps the list doesn't cover: write them as representative, and flag what could not be
+confirmed.<!-- /if -->
 
 {{PRODUCT_FACTS}}
 
@@ -28,19 +30,19 @@ Do not invent facts beyond this list.
 <!-- /if -->
 
 <!-- if: app -->
-## Screens and states to cover
+## Screens to cover
 
 {{SCREENS}}
-
-**States that a normal run through the product doesn't show, and that must still be covered:**
-
-{{STATES_TO_COVER}}
 <!-- /if -->
 <!-- if: site -->
 ## Pages to cover
 
 {{PAGES}}
 <!-- /if -->
+
+**States that a normal pass through the product doesn't show, and that must still be covered:**
+
+{{STATES_TO_COVER}}
 
 ## Voice and tone
 

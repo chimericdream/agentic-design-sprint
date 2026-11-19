@@ -8,7 +8,8 @@ Remove this comment.
 
 # Design brief: {{PRODUCT_NAME}}
 
-Sent to the independent designers, together with the content pack and the designers' addendum.
+Sent to the designers, together with the content pack. The independent designers also get the
+addendum.
 
 ## Your role
 
@@ -21,10 +22,10 @@ look-and-fix loop on screenshots.
 It contains an `inputs/` folder with everything you need: {{INPUTS_SUMMARY}}.
 <!-- /if -->
 <!-- if: new -->
-Everything you need is in this brief and the content pack.
+Everything you need is in this brief and the content pack<!-- if: copywriter -->, and the copy deck in your `inputs/` folder<!-- /if -->.
 <!-- /if -->
 <!-- if: copywriter -->
-Its `inputs/` folder also holds the approved copy deck in `inputs/copy/`: the words for every page
+Your `inputs/` folder holds the approved copy deck in `inputs/copy/`: the words for every page
 and state, a voice guide and length limits.
 <!-- /if -->
 That directory sits inside a code repository, and you are expected **not to browse it**. Do not open
@@ -89,6 +90,9 @@ on everything else.
 - **No third-party trade dress.** {{TRADE_DRESS}}
 - **{{RESPONSIVE_LABEL}}.** {{RESPONSIVE}}
 - **Themes.** {{THEME_RULE}}
+- **Sample data.** Mockups need names, dates, prices and other sample content. Invent plausible,
+  fictional data, never real people or brands. The rule against inventing facts is about claims
+  concerning the product, not sample data.
 - **Accessible.** WCAG AA contrast, visible focus states, correct heading order and landmarks,
   nothing conveyed by color alone, a calm option for any animation (`prefers-reduced-motion`). No
   text under {{MIN_TEXT_PX}} px.
@@ -121,13 +125,13 @@ real images arrive.
 whoever takes the screenshot later, not page content, so they must not take up layout space or
 change the height of the page. The box keeps the same size whether it holds one line of notes or
 four, and the notes never push surrounding content. Put them inside the box (for example in a
-corner panel or over the faux screen), set them small and legible, and make sure they fit at every
+corner panel or over the faux screen), set them compact but no smaller than the minimum text size, and make sure they fit at every
 width you mock, including the phone. If they can't fit, shorten them and keep the full text in
 `PLACEHOLDERS.md`. Once a real image replaces the placeholder, the notes disappear with it.
 
 The notes say:
 
-1. **Screen:** which view (for example, "Settings page").
+1. **Screen:** which view (for example, "the landing page").
 2. **State:** what data and condition to capture.
 3. **Viewport and theme:** phone or desktop, light or dark.
 4. **Focus:** what the viewer should notice, and what to crop to.

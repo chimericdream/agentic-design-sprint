@@ -47,7 +47,7 @@ All relative to the repo root.
 - **Master inputs:** `docs/{{NAME}}-project/design/inputs/`
 <!-- if: copywriter -->
 - **Copywriter directory:** `docs/{{NAME}}-project/design/copywriter/`, with the deck in its `copy/`
-  folder. The approved deck is copied to `design/inputs/copy/`.
+  folder. The approved deck is copied to `docs/{{NAME}}-project/design/inputs/copy/`.
 <!-- /if -->
 - **Designer directories:** `docs/{{NAME}}-project/design/designer-N/`, each with its own `inputs/`.
 <!-- if: synthesis -->

@@ -19,8 +19,9 @@ Revision requests follow." Log that you did.
 1. Confirm you are on the project's feature branch (create it from the main branch if not). Commit
    any pending project files (the briefs, `PROJECT.md`) as small `docs:` commits. Never push to the
    main branch.
-2. Run the project's checks if `PROJECT.md` lists any for committed files (lint, format). If they
-   fail on files you didn't write, report it to the human rather than fixing code yourself.
+2. Run only the fast checks `PROJECT.md` lists (lint, format) if they apply to the files you
+   committed. If they fail on files you didn't write, or can't run because the tools aren't
+   installed yet, report it to the human rather than fixing code yourself.
 3. **Redesign mode:** produce or refresh the screenshots with the project's command only if the
    index is missing or the app source changed after it was written. Read its "skipped" section and
    tell the human which states are missing. Don't block on it unless more than a handful are missing.

@@ -23,7 +23,7 @@ them. {{FRAMEWORK_NOTE}}
 ## What is in the package
 
 Start with `SPEC.md`. It is the developer handoff: tokens, the component inventory, the
-<!-- if: app -->screen-by-screen<!-- /if --><!-- if: site -->page-by-page<!-- /if --> rules, states, accessibility notes, a voice guide and a list of
+<!-- if: app -->screen-by-screen<!-- /if --><!-- if: site -->page-by-page<!-- /if --> rules, states, accessibility notes, <!-- if: no-copywriter -->a voice guide, <!-- /if -->and a list of
 what is flexible. `TOKENS.md` and `DESIGN-NOTES.md` explain the choices. `mockups/` holds static
 HTML and CSS you can open by double-clicking, and `screenshots/` holds PNGs. Where the spec and the
 mockup stylesheet disagree, the stylesheet wins.
@@ -71,7 +71,8 @@ updated to match.
 <!-- if: no-code-in-repo -->
 - **Accuracy.** The product's code is not in this repository, so you cannot verify docs or tutorial
   text against it. Build the text as written, keep a list of every command, default and step the
-  copy or design marks as unconfirmed, and put that list in your final report for the human to check.
+  the copy deck's `CLAIMS.md` or the design marks as unconfirmed, and put that list in your final
+  report for the human to check.
 <!-- /if -->
 <!-- /if -->
 - **Tokens.** Express the design's tokens as {{TOKEN_CONVENTION}}, light and dark, and mirror them
